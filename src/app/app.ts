@@ -1,17 +1,17 @@
 import { Component, signal } from '@angular/core';5
-import { PlayerCard } from './player-card/player-card';
-import { Player } from './player-card/interfaces/player';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [PlayerCard],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrls: ['./app.css']
 })
 export class App {
+
   protected readonly title = signal('dream-team-builder');
+  name = 'Angular';
 
-  name:string = 'Angular';
+} 
 
-  bellingham:Player = { name: 'Jude Belligham',position: 'CAM',team: 'Real Madrid', Nationality: 'England', Rating: 94, Goals: 24,  Assists: 17 };
-}
+// squad = playerService.getPlayers();

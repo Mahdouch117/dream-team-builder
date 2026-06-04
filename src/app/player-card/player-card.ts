@@ -9,9 +9,9 @@ import { Player } from './interfaces/player'
 })
 export class PlayerCard { 
   @Input() player!: Player;
-  toggleStats() {
-  const statsSection = document.getElementById('stats-section');
-  const button = document.getElementById('stats-btn');
+  toggleStats(playerId: number) {
+  const statsSection = document.getElementById('stats-section' + playerId);
+  const button = document.getElementById('stats-btn' + playerId);
 
   if (statsSection!.style.display === 'none') {
     statsSection!.style.display = 'flex';

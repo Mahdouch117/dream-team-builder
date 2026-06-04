@@ -1,0 +1,5 @@
+@for(player of squad; track player.id; let i = $index) {
+    <div id="'player'+{{i}}">
+        <app-player-card [player]="player"></app-player-card>
+    </div>
+}
