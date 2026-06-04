@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #002B5B; /* RM Navy */
+} 
+h1,:root {
+  --gold: #FBB800;
+  --navy: #002B5B;
+  --white: #FFFFFF; 
+}

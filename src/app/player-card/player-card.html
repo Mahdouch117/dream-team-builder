@@ -1,0 +1,25 @@
+@if(player) {
+
+ <div class="player-header">
+    <h2>{{player.name}}</h2>
+    <span>{{player.position}}</span>
+    <p>{{ player.team }}</p>
+    <p>{{ player.Nationality }}</p>
+ </div>
+ <div class="player-stats" id="stats-section" style="display: none;">
+<div class="stat">
+      <span class="stat-value">{{player.Rating}}</span>
+      <span class="stat-label">Rating</span>
+    </div>
+<div class="stat">
+      <span class="stat-value">{{player.Goals}}</span>
+      <span class="stat-label">Goals</span>
+    </div>
+ <span class="stat-value">{{player.Assists}}</span>
+        <span class="stat-label">Assists</span>
+    </div>
+     <button (click)="toggleStats()" id="stats-btn">
+      Show Stats ▼
+  </button>
+
+}
