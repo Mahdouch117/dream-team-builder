@@ -1,8 +1,110 @@
-body {
-  background-color: #002B5B; /* RM Navy */
-} 
-h1,:root {
+/* ===========================
+   Global Styles — Dream Team Builder
+   =========================== */
+
+:root {
   --gold: #FBB800;
+  --gold-light: #FFD35A;
+  --gold-dark: #D99E00;
   --navy: #002B5B;
-  --white: #FFFFFF; 
+  --navy-mid: #003c7e;
+  --navy-light: #0a4a8c;
+  --white: #FFFFFF;
+  --off-white: #F8F6F0;
+  --light-bg: #F5F3EE;
+  --card-bg: #FFFFFF;
+  --text: #1A1918;
+  --text-light: #6B6967;
+  --text-muted: #9A9794;
+  --border: #E8E4DB;
+  --shadow-sm: 0 2px 8px rgba(0,43,91,0.08);
+  --shadow-md: 0 6px 24px rgba(0,43,91,0.12);
+  --shadow-lg: 0 16px 48px rgba(0,43,91,0.18);
+  --radius: 12px;
+  --radius-sm: 6px;
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--light-bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--light-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Page fade-in */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-enter {
+  animation: fadeInUp 0.4s ease both;
 }

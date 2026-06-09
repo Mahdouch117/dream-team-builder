@@ -1,1 +1,68 @@
-<p>my-team works!</p>
+<div class="team-page">
+  <div class="team-layout">
+    <div class="pitch">
+      @for (player of squad; track player.id) {
+        <div class="player-pos" [ngClass]="getPositionClass(player.position)">
+          <div class="circle">
+            <img
+              class="pitch-player-img"
+              [src]="'assets/players/' + player.id + '.jpg'"
+              [alt]="player.name"
+            />
+          </div>
+
+          <div class="player-name">{{ player.name }}</div>
+          <div class="player-rating">{{ player.rating }}</div>
+
+          <button class="remove-btn" (click)="playerService.removeFromSquad(player.id)">
+            Remove
+          </button>
+        </div>
+      }
+    </div>
+
+    <div class="team-stats">
+      <h3>My Squad</h3>
+
+      <div class="stat-box big">
+        <div class="big-number">{{ getAverageRating() }}</div>
+        <div class="stat-label">avg rating</div>
+      </div>
+
+      <div class="stat-box">
+        <div class="stat-row">
+          <span>GK</span>
+          <span>{{ countByGroup('GK') }}</span>
+        </div>
+        <div class="stat-row">
+          <span>DEF</span>
+          <span>{{ countByGroup('DEF') }}</span>
+        </div>
+        <div class="stat-row">
+          <span>MID</span>
+          <span>{{ countByGroup('MID') }}</span>
+        </div>
+        <div class="stat-row">
+          <span>FWD</span>
+          <span>{{ countByGroup('FWD') }}</span>
+        </div>
+      </div>
+
+      <div class="stat-box">
+        <div class="big-number">{{ squad.length }}</div>
+        <div class="stat-label">players selected</div>
+      </div>
+
+      <div class="stat-box">
+        <div class="big-number">{{ getHighestRatedPlayer()?.rating || 0 }}</div>
+        <div class="stat-label">
+          highest rating<br />
+          {{ getHighestRatedPlayer()?.name || 'No player yet' }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+</div>
+

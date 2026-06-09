@@ -1,0 +1,7 @@
+.players-container {
+  display: flex;
+  flex-wrap: wrap; /* move to next line if no space */
+  gap: 20px;       /* space between cards */
+  justify-content: flex-start; /* or center */
+  padding: 20px;
+}

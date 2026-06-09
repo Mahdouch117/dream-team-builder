@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core'
 import { Player } from './interfaces/player'
+import { PlayersService } from '../services/player-service';
 
 @Component({
   selector: 'app-player-card',
@@ -9,6 +10,8 @@ import { Player } from './interfaces/player'
 })
 export class PlayerCard { 
   @Input() player!: Player;
+
+   constructor(public playerService: PlayersService) {}
   toggleStats(playerId: number) {
   const statsSection = document.getElementById('stats-section' + playerId);
   const button = document.getElementById('stats-btn' + playerId);

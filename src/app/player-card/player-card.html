@@ -1,24 +1,48 @@
 @if(player) {
+<div class="player-card">
 
- <div class="player-header">
-    <h2>{{player.name}}</h2>
-    <span>{{player.position}}</span>
-    <p>{{ player.team }}</p>
-    <p>{{ player.Nationality }}</p>
- </div>
- <div class="player-stats" id="stats-section{{player.id}}" style="display: none;">
-<div class="stat">
-      <span class="stat-value">{{player.Rating}}</span>
-      <span class="stat-label">Rating</span>
+  <div class="card-content">
+  
+    <img class="player-img" [src]="'assets/players/' + player.id + '.jpg'" alt="{{player.name}}" />
+
+    <div class="player-details">
+
+      <div class="player-header">
+        <h2>{{player.name}}</h2>
+        <span>{{player.position}}</span>
+      </div>
+
+      <div class="player-info">
+        <p><span class="label">Team:</span> {{ player.team }}</p>
+        <p><span class="label">Nationality:</span> {{ player.nationality }}</p>
+      </div>
+
+      <div class="player-stats" id="stats-section{{player.id}}" style="display: none;">
+        <div class="stat">
+          <span class="stat-value">{{player.rating}}</span>
+          <span class="stat-label">Rating</span>
+
+        </div>
+
+        <div class="stat">
+          <span class="stat-value">{{player.goals}}</span>
+          <span class="stat-label">Goals</span>
+        </div>
+
+        <div class="stat">
+          <span class="stat-value">{{player.assists}}</span>
+          <span class="stat-label">Assists</span>
+        </div>
+      </div>
+
+      <div class="card-buttons">
+        <button (click)="toggleStats(player.id)">Show Stats ▼</button>
+        <button (click)="playerService.addToSquad(player)">Add to Team</button>
+      </div>
+
     </div>
-<div class="stat">
-      <span class="stat-value">{{player.Goals}}</span>
-      <span class="stat-label">Goals</span>
-    </div>
- <span class="stat-value">{{player.Assists}}</span>
-        <span class="stat-label">Assists</span>
-    </div>
-     <button (click)="toggleStats(player.id)" id="stats-btn{{player.id}}">
-      Show Stats ▼
-  </button>
+
+  </div>
+
+</div>
 }

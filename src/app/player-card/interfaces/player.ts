@@ -1,11 +1,12 @@
 export class Player 
-{ id!: number;
+{   
+    id!: number;
     name: string = 'Jude Belligham'
-  position: string = 'CM'
-  team: string = 'Real Madrid'
-  Nationality: string= 'England'
-    Rating: number = 93
-    Goals: number = 24
-    Assists: number = 17
+    position: string = 'MID'
+    team: string = 'Real Madrid'
+    nationality: string= 'England'
+    rating: number = 93
+    goals: number = 24
+    assists: number = 17
 
 }

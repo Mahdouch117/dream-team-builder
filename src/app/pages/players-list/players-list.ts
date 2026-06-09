@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Player } from '../../player-card/interfaces/player';
-import { PlayerService } from '../../services/player-service';
+import { PlayersService } from '../../services/player-service';
 import { PlayerCard } from '../../player-card/player-card';
 
 @Component({
@@ -8,10 +8,18 @@ import { PlayerCard } from '../../player-card/player-card';
   imports: [PlayerCard],
   templateUrl: './players-list.html',
   styleUrl: './players-list.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PlayersList {  
+export class PlayersList implements OnInit {  
   squad: Player[] = [];
+  constructor(private playerService: PlayersService, private cdr: ChangeDetectorRef) {
 
-  constructor(private playerService: PlayerService) {
-    this.squad = playerService.getPlayers();
-  }}
+  }
+
+  ngOnInit(): void {
+    this.playerService.getPlayers().subscribe(x=>{
+        this.squad = x;
+        this.cdr.detectChanges();
+    } );
+  }
+}

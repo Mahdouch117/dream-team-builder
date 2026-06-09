@@ -1,23 +1,44 @@
 import { Injectable } from '@angular/core';
 import { Player } from '../player-card/interfaces/player';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environment';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PlayerService {
-  
-  
-  private players: Player[] = [
-    { id: 1, name: "Jude Bellingham", position: "CAM", team: "Real Madrid", Nationality: "England", Rating: 94, Goals: 24, Assists: 17 },
-    { id: 2, name: "Vinícius Jr.", position: "LW", team: "Real Madrid", Nationality: "Brazil", Rating: 92, Goals: 20, Assists: 15 },
-    { id: 3, name: "Mbappe", position: "ST", team: "Real Madrid", Nationality: "France", Rating: 96, Goals: 52, Assists: 26 },
-    { id: 4, name: "Federico Valverde", position: "CDM", team: "Real Madrid", Nationality: "Uruguay", Rating: 91, Goals: 15, Assists: 13 },
-    { id: 5, name: "Luka Modrić", position: "CM", team: "Real Madrid", Nationality: "Croatia", Rating: 93, Goals: 26, Assists: 30 },
-  ]
+export class PlayersService {
 
-  getPlayers(): Player[] {
-    return this.players
+  private squad: Player[] = [];
+
+  private apiUrl = environment.apiUrl;
+
+  constructor(private http: HttpClient) {}
+
+  // ✅ ADD PLAYER
+  addToSquad(player: Player): void {
+    const exists = this.squad.some(p => p.id === player.id);
+
+    if (!exists && this.squad.length < 11) {
+      this.squad.push(player);
+    }
   }
 
+  // ✅ GET SQUAD
+  getSquad(): Player[] {
+    return this.squad;
+  }
 
-} 
+  // ✅ REMOVE PLAYER
+  removeFromSquad(playerId: number): void {
+    this.squad = this.squad.filter(p => p.id !== playerId);
+  }
+
+  // ✅ GET PLAYERS FROM API
+  getPlayers(): Observable<Player[]> {
+    return this.http.get<Player[]>(
+      `${this.apiUrl}/player`
+    );
+  }
+
+}
